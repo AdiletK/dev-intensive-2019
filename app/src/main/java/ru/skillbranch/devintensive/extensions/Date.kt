@@ -1,6 +1,9 @@
 package ru.skillbranch.devintensive.extensions
 
+import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
+import kotlin.math.abs
+import kotlin.math.roundToInt
 
 const val SECOND =1000L
 const val MINUTE = 60 * SECOND
@@ -25,26 +28,37 @@ fun Date.add(value: Int, unit: TimeUnits = TimeUnits.SECOND):Date{
     return this
 }
 
- fun Date.humanizeDiff(date: Date = Date()): String {
-     val now = Date()
-
-     val diff = now.time - this.time
-
-     val seconds = diff/1000
-     val minutes = seconds/60
-     val hours = seconds/(60*60)
-     val days = seconds/(60*60*24)
-     val week  = seconds/(60*60*24*7)
-     val month = (seconds/(60*60*24*7*4.3)).toInt()
-     val year = seconds/(60*60*24*7*4.3*12)
-
-     return if (diff>=0) {
-         getPastVisit(seconds, minutes, hours, days, week, month, year, date)
-     }else{
-         getFutureVisit(seconds*-1,minutes*-1,hours*-1,days*-1,week*-1,month*-1,year*-1,date)
-     }
-
+fun Date.humanizeDiff(date: Date = Date()): String {
+        val diff = this.time - date.time
+         return if (diff >= 0) {
+            humanizeFuture(abs(diff))
+         } else {
+            humanizePast(abs(diff))
+         }
  }
+private fun humanizeFuture(diff: Long): String {
+    return when (diff) {
+        in 0..(1 * SECOND) -> "только что"
+        in (1 * SECOND + 1)..(45 * SECOND) -> "через несколько секунд"
+        in (45 * SECOND + 1)..(75 * SECOND) -> "через минуту"
+        in (75 * SECOND + 1)..(45 * MINUTE) -> {
+            val amount = calcDiffAmount(diff, MINUTE)
+            "через $amount ${Utils.getPluralForm("минуту;минуты;минут", amount)}"
+        }
+        in (45 * MINUTE + 1)..(75 * MINUTE) -> "через час"
+        in (75 * MINUTE + 1)..(22 * HOUR) -> {
+            val amount = calcDiffAmount(diff, HOUR)
+            "через $amount ${Utils.getPluralForm("час;часа;часов", amount)}"
+        }
+        in (22 * HOUR + 1)..(26 * HOUR) -> "через день"
+        in (26 * HOUR + 1)..(360 * DAY) -> {
+            val amount = calcDiffAmount(diff, DAY)
+            "через $amount ${Utils.getPluralForm("день;дня;дней", amount)}"
+        }
+        else -> "более чем через год"
+    }
+}
+
 
 fun getFutureVisit(
     seconds: Long,
@@ -159,4 +173,31 @@ enum class TimeUnits{
     MINUTE,
     HOUR,
     DAY
+}
+
+private fun humanizePast(diff: Long): String {
+    return when (diff) {
+        in 0..(1 * SECOND) -> "только что"
+        in (1 * SECOND + 1)..(45 * SECOND) -> "несколько секунд назад"
+        in (45 * SECOND + 1)..(75 * SECOND) -> "минуту назад"
+        in (75 * SECOND + 1)..(45 * MINUTE) -> {
+            val amount = calcDiffAmount(diff, MINUTE)
+            "$amount ${Utils.getPluralForm("минуту;минуты;минут", amount)} назад"
+        }
+        in (45 * MINUTE + 1)..(75 * MINUTE) -> "час назад"
+        in (75 * MINUTE + 1)..(22 * HOUR) -> {
+            val amount = calcDiffAmount(diff, HOUR)
+            "$amount ${Utils.getPluralForm("час;часа;часов", amount)} назад"
+        }
+        in (22 * HOUR + 1)..(26 * HOUR) -> "день назад"
+        in (26 * HOUR + 1)..(360 * DAY) -> {
+            val amount = calcDiffAmount(diff, DAY)
+            "$amount ${Utils.getPluralForm("день;дня;дней", amount)} назад"
+        }
+        else -> "более года назад"
+    }
+}
+private fun calcDiffAmount(diff: Long, timeInterval: Long): Int {
+    val result: Float = (diff.toFloat() / timeInterval.toFloat())
+    return result.roundToInt()
 }

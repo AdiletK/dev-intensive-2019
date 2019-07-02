@@ -1,50 +1,56 @@
 package ru.skillbranch.devintensive.utils
 
+import ru.skillbranch.devintensive.extensions.DAY
+import ru.skillbranch.devintensive.extensions.HOUR
+import ru.skillbranch.devintensive.extensions.MINUTE
+import ru.skillbranch.devintensive.extensions.SECOND
+import kotlin.math.roundToInt
+
 object Utils {
 
+//
+//    fun transliteration(payload: String,divider: String = ""): String {
+//        return if (divider.isNotEmpty()){
+//            convertRU(payload)
+//        } else{
+//            val parts:List<String>? = payload.trim().split(" ")
+//            val firstName:String
+//            var lastName = ""
+//
+//            firstName = convertRU(parts!![0])
+//            if (parts.size>1){
+//                lastName = convertRU(parts[1])
+//                if (isNullOrEmpty(lastName)){
+//                    return "$firstName$divider"
+//                }
+//            }
+//
+//            "$firstName$divider$lastName"
+//        }
+//    }
 
-    fun transliteration(payload: String,divider: String = ""): String {
-        return if (divider.isNotEmpty()){
-            convertRU(payload)
-        } else{
-            val parts:List<String>? = payload.trim().split(" ")
-            val firstName:String
-            var lastName = ""
-
-            firstName = convertRU(parts!![0])
-            if (parts.size>1){
-                lastName = convertRU(parts[1])
-                if (isNullOrEmpty(lastName)){
-                    return "$firstName$divider"
-                }
-            }
-
-            "$firstName$divider$lastName"
-        }
-    }
-
-    fun toInitials(firstName: String?, lastName: String?): String? {
-        val strokeFirst: String?
-        val strokeTwo: String?
-
-        when {
-            firstName == null -> strokeFirst = null
-            firstName.isBlank() -> strokeFirst = ""
-            else -> strokeFirst = firstName.trim(' ')[0].toUpperCase().toString()
-        }
-
-        when {
-            lastName == null -> strokeTwo = null
-            lastName.isBlank() -> strokeTwo = ""
-            else -> strokeTwo = lastName.trim(' ')[0].toUpperCase().toString()
-        }
-
-        return if ((strokeFirst == null && strokeTwo == null) || (strokeFirst == "" && strokeTwo == "")) {
-            null
-        } else {
-            "${if (strokeFirst != "") strokeFirst else ""}${if (strokeTwo != null) strokeTwo else ""}"
-        }
-    }
+//    fun toInitials(firstName: String?, lastName: String?): String? {
+//        val strokeFirst: String?
+//        val strokeTwo: String?
+//
+//        when {
+//            firstName == null -> strokeFirst = null
+//            firstName.isBlank() -> strokeFirst = ""
+//            else -> strokeFirst = firstName.trim(' ')[0].toUpperCase().toString()
+//        }
+//
+//        when {
+//            lastName == null -> strokeTwo = null
+//            lastName.isBlank() -> strokeTwo = ""
+//            else -> strokeTwo = lastName.trim(' ')[0].toUpperCase().toString()
+//        }
+//
+//        return if ((strokeFirst == null && strokeTwo == null) || (strokeFirst == "" && strokeTwo == "")) {
+//            null
+//        } else {
+//            "${if (strokeFirst != "") strokeFirst else ""}${if (strokeTwo != null) strokeTwo else ""}"
+//        }
+//    }
 
     fun parseFullName(fullName:String?):Pair<String?,String?>{
         if (isNullOrEmpty(fullName)){
@@ -64,83 +70,106 @@ object Utils {
         return true
     }
 
-     private fun convertRU(cyr: String): String {
+    fun toInitials(firstName: String?, lastName: String?): String? {
+        val initials = (if (firstName.isNullOrBlank()) "" else firstName.substring(0, 1)) +
+                if (lastName.isNullOrBlank()) "" else lastName.substring(0, 1)
 
-        var lat: String
+        return (if (initials.isEmpty()) null else initials.toUpperCase())
+    }
 
-        //Lower case letters
-        lat = cyr.replace("а".toRegex(), "a")
-        lat = lat.replace("б".toRegex(), "b")
-        lat = lat.replace("в".toRegex(), "v")
-        lat = lat.replace("г".toRegex(), "g")
-        lat = lat.replace("д".toRegex(), "d")
-        lat = lat.replace("е".toRegex(), "e")
-        lat = lat.replace("ё".toRegex(), "e")
-        lat = lat.replace("ж".toRegex(), "zh")
-        lat = lat.replace("з".toRegex(), "z")
-        lat = lat.replace("и".toRegex(), "i")
-        lat = lat.replace("й".toRegex(), "i")
-        lat = lat.replace("к".toRegex(), "k")
-        lat = lat.replace("л".toRegex(), "l")
-        lat = lat.replace("м".toRegex(), "m")
-        lat = lat.replace("н".toRegex(), "n")
-        lat = lat.replace("о".toRegex(), "o")
-        lat = lat.replace("п".toRegex(), "p")
-        lat = lat.replace("р".toRegex(), "r")
-        lat = lat.replace("с".toRegex(), "s")
-        lat = lat.replace("т".toRegex(), "t")
-        lat = lat.replace("у".toRegex(), "u")
-        lat = lat.replace("ф".toRegex(), "f")
-        lat = lat.replace("х".toRegex(), "h")
-        lat = lat.replace("ц".toRegex(), "с")
-        lat = lat.replace("ч".toRegex(), "ch")
-        lat = lat.replace("ш".toRegex(), "sh")
-        lat = lat.replace("щ".toRegex(), "sh")
-        lat = lat.replace("ъ".toRegex(), "")
-        lat = lat.replace("ы".toRegex(), "i")
-        lat = lat.replace("ь".toRegex(), "")
-        lat = lat.replace("э".toRegex(), "e")
-        lat = lat.replace("ю".toRegex(), "yu")
-        lat = lat.replace("я".toRegex(), "ya")
+    fun transliteration(payload: String, divider: String = " "): String {
+        val mapping = payload.map {
+            when (it) {
+                ' ' -> divider
+                'а' -> 'a'
+                'б' -> 'b'
+                'в' -> 'v'
+                'г' -> 'g'
+                'д' -> 'd'
+                'е' -> 'e'
+                'ё' -> 'e'
+                'ж' -> "zh"
+                'з' -> 'z'
+                'и' -> 'i'
+                'й' -> 'i'
+                'к' -> 'k'
+                'л' -> 'l'
+                'м' -> 'm'
+                'н' -> 'n'
+                'о' -> 'o'
+                'п' -> 'p'
+                'р' -> 'r'
+                'с' -> 's'
+                'т' -> 't'
+                'у' -> 'u'
+                'ф' -> 'f'
+                'х' -> 'h'
+                'ц' -> 'c'
+                'ч' -> "ch"
+                'ш' -> "sh"
+                'щ' -> "sh'"
+                'ъ' -> ""
+                'ы' -> 'i'
+                'ь' -> ""
+                'э' -> 'e'
+                'ю' -> "yu"
+                'я' -> "ya"
+                'А' -> 'A'
+                'Б' -> 'B'
+                'В' -> 'V'
+                'Г' -> 'G'
+                'Д' -> 'D'
+                'Е' -> 'E'
+                'Ё' -> 'E'
+                'Ж' -> "Zh"
+                'З' -> 'Z'
+                'И' -> 'I'
+                'Й' -> 'I'
+                'К' -> 'K'
+                'Л' -> 'L'
+                'М' -> 'M'
+                'Н' -> 'N'
+                'О' -> 'O'
+                'П' -> 'P'
+                'Р' -> 'R'
+                'С' -> 'S'
+                'Т' -> 'T'
+                'У' -> 'U'
+                'Ф' -> 'F'
+                'Х' -> 'H'
+                'Ц' -> 'C'
+                'Ч' -> "Ch"
+                'Ш' -> "Sh"
+                'Щ' -> "Sh'"
+                'Ъ' -> ""
+                'Ы' -> 'I'
+                'Ь' -> ""
+                'Э' -> 'E'
+                'Ю' -> "Yu"
+                'Я' -> "Ya"
+                else -> it
+            }
+        }
 
-        //Capital letters
-        lat = lat.replace("А".toRegex(), "A")
-        lat = lat.replace("Б".toRegex(), "B")
-        lat = lat.replace("В".toRegex(), "V")
-        lat = lat.replace("Г".toRegex(), "G")
-        lat = lat.replace("Д".toRegex(), "D")
-        lat = lat.replace("Е".toRegex(), "E")
-        lat = lat.replace("Ё".toRegex(), "E")
-        lat = lat.replace("Ж".toRegex(), "ZH")
-        lat = lat.replace("З".toRegex(), "Z")
-        lat = lat.replace("И".toRegex(), "I")
-        lat = lat.replace("Й".toRegex(), "I")
-        lat = lat.replace("К".toRegex(), "K")
-        lat = lat.replace("Л".toRegex(), "L")
-        lat = lat.replace("М".toRegex(), "M")
-        lat = lat.replace("Н".toRegex(), "N")
-        lat = lat.replace("О".toRegex(), "O")
-        lat = lat.replace("П".toRegex(), "P")
-        lat = lat.replace("Р".toRegex(), "R")
-        lat = lat.replace("С".toRegex(), "S")
-        lat = lat.replace("Т".toRegex(), "T")
-        lat = lat.replace("У".toRegex(), "U")
-        lat = lat.replace("Ф".toRegex(), "F")
-        lat = lat.replace("Х".toRegex(), "H")
-        lat = lat.replace("Ц".toRegex(), "C")
-        lat = lat.replace("Ч".toRegex(), "CH")
-        lat = lat.replace("Ш".toRegex(), "SH")
-        lat = lat.replace("Щ".toRegex(), "SH")
-        lat = lat.replace("Ъ".toRegex(), "")
-        lat = lat.replace("Ы".toRegex(), "I")
-        lat = lat.replace("Ь".toRegex(), "")
-        lat = lat.replace("Э".toRegex(), "E")
-        lat = lat.replace("Ю".toRegex(), "YU")
-        lat = lat.replace("Я".toRegex(), "YA")
+        return mapping.joinToString(separator = "")
+    }
 
+    /**
+     * @param pluralForms - три варианта множественной формы существительного, разделённых
+     *                    точкой с запятой (пример: огурец;огурца;огурцов)
+     * @param count       - количество
+     * @return - множественная форма, соответствующая количеству
+     */
+    fun getPluralForm(pluralForms: String, count: Int): String {
+        val forms = pluralForms.split(";")
+        when (count % 10) {
+            1 -> if (count % 100 != 11)
+                return forms[0]
+            in 2..4 -> if (count % 100 !in 12..14) {
+                return forms[1]
+            }
+        }
 
-        return lat //Return latinized string
-
-
+        return forms[2]
     }
 }
