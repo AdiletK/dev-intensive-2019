@@ -18,9 +18,7 @@ data class User (
 
     constructor(id: String):this(id,"Name","Surname $id")
 
-    init {
-        println("Hello world")
-    }
+
 
 
     companion object Factory{
