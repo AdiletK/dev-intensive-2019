@@ -28,7 +28,7 @@ fun Date.add(value: Int, unit: TimeUnits = TimeUnits.SECOND):Date{
  fun Date.humanizeDiff(date: Date = Date()): String {
      val now = Date()
 
-     val diff = now.time - date.time
+     val diff = now.time - this.time
 
      val seconds = diff/1000
      val minutes = seconds/60

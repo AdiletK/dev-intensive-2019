@@ -4,7 +4,7 @@ object Utils {
 
 
     fun transliteration(payload: String,divider: String = ""): String {
-        return if (isNullOrEmpty(divider)){
+        return if (divider.isNotEmpty()){
             convertRU(payload)
         } else{
             val parts:List<String>? = payload.trim().split(" ")
@@ -24,15 +24,25 @@ object Utils {
     }
 
     fun toInitials(firstName: String?, lastName: String?): String? {
-        return if (isNullOrEmpty(firstName)&& isNullOrEmpty(lastName)){
-            null
-        }else if( isNullOrEmpty(lastName)){
-            return firstName?.get(0).toString().toUpperCase()
+        val strokeFirst: String?
+        val strokeTwo: String?
+
+        when {
+            firstName == null -> strokeFirst = null
+            firstName.isBlank() -> strokeFirst = ""
+            else -> strokeFirst = firstName.trim(' ')[0].toUpperCase().toString()
         }
-        else {
-            val firstChar = firstName?.get(0)
-            val secondChar = lastName?.get(0)
-            "$firstChar$secondChar".toUpperCase()
+
+        when {
+            lastName == null -> strokeTwo = null
+            lastName.isBlank() -> strokeTwo = ""
+            else -> strokeTwo = lastName.trim(' ')[0].toUpperCase().toString()
+        }
+
+        return if ((strokeFirst == null && strokeTwo == null) || (strokeFirst == "" && strokeTwo == "")) {
+            null
+        } else {
+            "${if (strokeFirst != "") strokeFirst else ""}${if (strokeTwo != null) strokeTwo else ""}"
         }
     }
 
