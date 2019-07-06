@@ -1,56 +1,8 @@
 package ru.skillbranch.devintensive.utils
 
-import ru.skillbranch.devintensive.extensions.DAY
-import ru.skillbranch.devintensive.extensions.HOUR
-import ru.skillbranch.devintensive.extensions.MINUTE
-import ru.skillbranch.devintensive.extensions.SECOND
-import kotlin.math.roundToInt
+
 
 object Utils {
-
-//
-//    fun transliteration(payload: String,divider: String = ""): String {
-//        return if (divider.isNotEmpty()){
-//            convertRU(payload)
-//        } else{
-//            val parts:List<String>? = payload.trim().split(" ")
-//            val firstName:String
-//            var lastName = ""
-//
-//            firstName = convertRU(parts!![0])
-//            if (parts.size>1){
-//                lastName = convertRU(parts[1])
-//                if (isNullOrEmpty(lastName)){
-//                    return "$firstName$divider"
-//                }
-//            }
-//
-//            "$firstName$divider$lastName"
-//        }
-//    }
-
-//    fun toInitials(firstName: String?, lastName: String?): String? {
-//        val strokeFirst: String?
-//        val strokeTwo: String?
-//
-//        when {
-//            firstName == null -> strokeFirst = null
-//            firstName.isBlank() -> strokeFirst = ""
-//            else -> strokeFirst = firstName.trim(' ')[0].toUpperCase().toString()
-//        }
-//
-//        when {
-//            lastName == null -> strokeTwo = null
-//            lastName.isBlank() -> strokeTwo = ""
-//            else -> strokeTwo = lastName.trim(' ')[0].toUpperCase().toString()
-//        }
-//
-//        return if ((strokeFirst == null && strokeTwo == null) || (strokeFirst == "" && strokeTwo == "")) {
-//            null
-//        } else {
-//            "${if (strokeFirst != "") strokeFirst else ""}${if (strokeTwo != null) strokeTwo else ""}"
-//        }
-//    }
 
     fun parseFullName(fullName:String?):Pair<String?,String?>{
         if (isNullOrEmpty(fullName)){
@@ -154,12 +106,6 @@ object Utils {
         return mapping.joinToString(separator = "")
     }
 
-    /**
-     * @param pluralForms - три варианта множественной формы существительного, разделённых
-     *                    точкой с запятой (пример: огурец;огурца;огурцов)
-     * @param count       - количество
-     * @return - множественная форма, соответствующая количеству
-     */
     fun getPluralForm(pluralForms: String, count: Int): String {
         val forms = pluralForms.split(";")
         when (count % 10) {
