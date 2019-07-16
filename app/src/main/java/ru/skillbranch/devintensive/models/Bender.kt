@@ -2,24 +2,46 @@ package ru.skillbranch.devintensive.models
 
 class Bender(var status: Status = Status.NORMAL, var question: Question = Question.NAME) {
 
-    fun askQuestion(): String = when (question) {
+    private val MAX_COUNT_QUESTION_ERR = 3
+    private var currentCountErr = 0
 
+    fun askQuestion(): String = when (question) {
         Question.NAME -> Question.NAME.question
+
         Question.PROFESSION -> Question.PROFESSION.question
+
         Question.MATERIAL -> Question.MATERIAL.question
+
         Question.BDAY -> Question.BDAY.question
+
         Question.SERIAL -> Question.SERIAL.question
+
         Question.IDLE -> Question.IDLE.question
+
+    }
+
+    private fun setDefaultConfig() {
+        status = Status.NORMAL
+        question = Question.NAME
     }
 
     fun listenAnswer(answer: String): Pair<String, Triple<Int, Int, Int>> {
-
-        return if (question.answers.contains(answer)) {
+        return if (question.answer.contains(answer)) {
             question = question.nextQuestion()
-            "Отлично - это правильный ответ!\n${question.question}" to status.color
-        }else {
-            status = status.nextStatus()
-            "Это не правильный ответ!\n${question.question}" to status.color
+
+            "Отлично - ты справился\n${question.question}" to status.color
+        } else {
+            return if (currentCountErr == MAX_COUNT_QUESTION_ERR) {
+                currentCountErr = 0
+                setDefaultConfig()
+
+                "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
+            } else {
+                currentCountErr++
+                status = status.nextStatus()
+
+                "Это не правильный ответ!\n${question.question}" to status.color
+            }
         }
     }
 
@@ -41,7 +63,7 @@ class Bender(var status: Status = Status.NORMAL, var question: Question = Questi
         }
     }
 
-    enum class Question(val question: String, val answers: List<String>) {
+    enum class Question(val question: String, val answer: List<String>) {
         NAME("Как меня зовут?", listOf("бендер", "bender")) {
             override fun nextQuestion(): Question = PROFESSION
         },

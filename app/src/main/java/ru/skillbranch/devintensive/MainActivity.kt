@@ -13,7 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.activity_main.*
 import ru.skillbranch.devintensive.extensions.hideKeyboard
-import ru.skillbranch.devintensive.extensions.isKeyboardOpen
 import ru.skillbranch.devintensive.models.Bender
 
 class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEditorActionListener {
@@ -21,7 +20,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
         if (id == EditorInfo.IME_ACTION_DONE) {
             onClick(sendBtn)
             Log.d("M_MainActivity", "Нажали точно ")
-            Log.d("M_MainActivity","${this.isKeyboardOpen()}")
 
             return false
         }
@@ -69,7 +67,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener, TextView.OnEdito
 
             textTxt.text = phrase
 
-            this.hideKeyboard()
+            hideKeyboard()
         }
     }
 
