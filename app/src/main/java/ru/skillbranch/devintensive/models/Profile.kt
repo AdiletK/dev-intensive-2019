@@ -9,8 +9,8 @@ data class Profile (
     val respect :Int = 0
 ) {
 
-    val nickName :String= "John Doe" //TODO implement this
-    val rank :String = "Junior Android Developer"
+    val nickName :String= "John Doe"
+    val rank :String = "Junior Android Developers"
 
     fun toMap():Map<String,Any> = mapOf(
         "nickName" to nickName,

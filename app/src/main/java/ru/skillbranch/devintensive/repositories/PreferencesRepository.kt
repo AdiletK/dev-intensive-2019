@@ -31,10 +31,6 @@ object PreferencesRepository {
            putValue(REPOSITORY to repository )
            putValue(RATING to rating )
            putValue(RESPECT to respect )
-
-
-
-
         }
     }
     fun getProfile() = Profile (

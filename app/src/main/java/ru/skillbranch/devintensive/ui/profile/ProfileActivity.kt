@@ -36,6 +36,8 @@ class ProfileActivity : AppCompatActivity() {
     lateinit var viewFields: Map<String,TextView>
 
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
 
@@ -50,7 +52,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun  initViews(savedInstanceState: Bundle?){
         viewFields = mapOf(
-            "nickname" to tv_nick_name,
+            "nickName" to tv_nick_name,
             "rank" to tv_rank,
             "firstName" to et_first_name,
             "lastName" to et_last_name,
@@ -84,7 +86,7 @@ class ProfileActivity : AppCompatActivity() {
 
     private fun updateTheme(mode: Int) {
         Log.d("ProfileActivity","Update Theme")
-        delegate.localNightMode = mode
+        delegate.setLocalNightMode(mode)
     }
 
     private fun updateUI(profile: Profile) {
@@ -136,7 +138,7 @@ class ProfileActivity : AppCompatActivity() {
             firstName = et_first_name.text.toString(),
             lastName = et_last_name.text.toString(),
             about = et_about.text.toString(),
-            repository = et_repository.toString()
+            repository = et_repository.text.toString()
         ).apply {
             viewModel.saveProfileData(this)
         }

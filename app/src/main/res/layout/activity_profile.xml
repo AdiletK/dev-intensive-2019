@@ -42,6 +42,7 @@
                     android:layout_height="@dimen/avatar_round_size"
                     android:src="@drawable/avatar_default"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginTop="@dimen/spacing_tiny_4"
             />
 
            <ImageButton
@@ -72,7 +73,6 @@
                     android:layout_height="wrap_content"
                     android:layout_below="@id/tv_nick_name"
                     android:layout_centerHorizontal="true"
-                    tools:text="Junior Android Developer"
             />
         </RelativeLayout>
     </FrameLayout>
