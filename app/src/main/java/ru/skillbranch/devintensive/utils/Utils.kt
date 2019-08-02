@@ -1,5 +1,6 @@
 package ru.skillbranch.devintensive.utils
 
+import android.content.res.Resources
 
 
 object Utils {
@@ -117,5 +118,24 @@ object Utils {
         }
 
         return forms[2]
+    }
+
+    fun dpToPx(dp: Int) = (dp * Resources.getSystem().displayMetrics.density).toInt()
+
+    fun spToPx(sp: Int) = (sp * Resources.getSystem().displayMetrics.scaledDensity).toInt()
+
+    fun pxToDp(px: Int) = (px / Resources.getSystem().displayMetrics.density).toInt()
+
+
+    private val githubExceptionWords = arrayOf(
+        "enterprise", "features", "topics", "collections", "trending", "events", "marketplace", "pricing",
+        "nonprofit", "customer-stories", "security", "login", "join"
+    ).joinToString("|\\b", "\\b")
+
+    fun isRepositoryValid(repository: String): Boolean {
+        if (repository.isEmpty()) return true
+        val regexStr = "^(?:https://)?(?:www.)?(?:github.com/)[^/|\\s]+(?<!$githubExceptionWords)(?:/)?$"
+
+        return regexStr.toRegex().matches(repository)
     }
 }

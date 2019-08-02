@@ -11,7 +11,7 @@ class AspectRatioImageView @JvmOverloads constructor(
     defStyleAttr:Int =0)  : ImageView(context, attrs, defStyleAttr){
 
     companion object{
-        private const val DEFAULT_ASPECT_RATIO = 1.78f;
+        private const val DEFAULT_ASPECT_RATIO = 1.78f
     }
 
     private var aspectRatio = DEFAULT_ASPECT_RATIO
