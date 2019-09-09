@@ -11,7 +11,7 @@
                         "startOffsets": "95",
                         "endLines": "14",
                         "endColumns": "12",
-                        "endOffsets": "698"
+                        "endOffsets": "707"
                     },
                     "to": {
                         "startLines": "2",
@@ -19,11 +19,11 @@
                         "startOffsets": "55",
                         "endLines": "13",
                         "endColumns": "12",
-                        "endOffsets": "647"
+                        "endOffsets": "656"
                     }
                 },
                 {
-                    "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\f17a21eb106b7babe0840696bf7ed99f\\res\\values-night-v8\\values-night-v8.xml",
+                    "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\92d91bde83bd15a5fac9900e78109a87\\appcompat-1.0.2\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8",
                         "startColumns": "4,4,4,4,4,4,4",
@@ -34,9 +34,9 @@
                     "to": {
                         "startLines": "14,15,16,17,18,19,20",
                         "startColumns": "4,4,4,4,4,4,4",
-                        "startOffsets": "652,722,806,890,986,1088,1190",
+                        "startOffsets": "661,731,815,899,995,1097,1199",
                         "endColumns": "69,83,83,95,101,101,93",
-                        "endOffsets": "717,801,885,981,1083,1185,1279"
+                        "endOffsets": "726,810,894,990,1092,1194,1288"
                     }
                 }
             ]

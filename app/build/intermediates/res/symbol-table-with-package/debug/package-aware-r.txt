@@ -11,10 +11,13 @@ anim abc_slide_out_bottom
 anim abc_slide_out_top
 anim abc_tooltip_enter
 anim abc_tooltip_exit
+anim bottom_down
+anim bottom_up
 anim design_bottom_sheet_slide_in
 anim design_bottom_sheet_slide_out
 anim design_snackbar_in
 anim design_snackbar_out
+anim idle
 animator design_appbar_state_list_animator
 animator design_fab_hide_motion_spec
 animator design_fab_show_motion_spec
@@ -621,6 +624,8 @@ color color_divider_light
 color color_gray
 color color_gray_dark
 color color_gray_light
+color color_green
+color color_indicator
 color color_primary
 color color_primary_dark
 color color_primary_light
@@ -784,6 +789,7 @@ dimen abc_text_size_subhead_material
 dimen abc_text_size_subtitle_material_toolbar
 dimen abc_text_size_title_material
 dimen abc_text_size_title_material_toolbar
+dimen avatar_item_size
 dimen avatar_round_size
 dimen btn_round_size_40
 dimen cardview_compat_inset_shadow
@@ -796,6 +802,7 @@ dimen compat_button_padding_vertical_material
 dimen compat_control_corner_material
 dimen compat_notification_large_icon_max_height
 dimen compat_notification_large_icon_max_width
+dimen counter_size
 dimen design_appbar_elevation
 dimen design_bottom_navigation_active_item_max_width
 dimen design_bottom_navigation_active_item_min_width
@@ -855,6 +862,7 @@ dimen hint_alpha_material_dark
 dimen hint_alpha_material_light
 dimen hint_pressed_alpha_material_dark
 dimen hint_pressed_alpha_material_light
+dimen icon_size
 dimen item_touch_helper_max_drag_scroll_per_frame
 dimen item_touch_helper_swipe_escape_max_velocity
 dimen item_touch_helper_swipe_escape_velocity
@@ -1022,6 +1030,8 @@ drawable abc_vector_test
 drawable avatar_default
 drawable avd_hide_password
 drawable avd_show_password
+drawable bg_counter
+drawable bg_indicator
 drawable btn_round_bg
 drawable design_bottom_navigation_item_background
 drawable design_fab_background
@@ -1030,7 +1040,11 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable ic_about
+drawable ic_add_black_24dp
+drawable ic_archive_black_24dp
+drawable ic_arrow_forward_black_24dp
 drawable ic_avatar
+drawable ic_done_black_24dp
 drawable ic_edit_black_24dp
 drawable ic_eye_24dp
 drawable ic_launcher_background
@@ -1041,6 +1055,7 @@ drawable ic_mtrl_chip_close_circle
 drawable ic_repo
 drawable ic_respect_24
 drawable ic_save_black_24dp
+drawable ic_search_black_24dp
 drawable ic_sp_24
 drawable ic_splash
 drawable ic_switch_day_night
@@ -1084,6 +1099,7 @@ id action_menu_presenter
 id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
+id action_search
 id action_text
 id actions
 id activity_chooser_view_content
@@ -1105,6 +1121,7 @@ id center_horizontal
 id center_vertical
 id chains
 id checkbox
+id chip_group
 id chronometer
 id clip_horizontal
 id clip_vertical
@@ -1136,6 +1153,7 @@ id et_repository
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
+id fab
 id fill
 id fill_horizontal
 id fill_vertical
@@ -1143,6 +1161,7 @@ id filled
 id fixed
 id forever
 id ghost_view
+id glide_custom_view_target_tag
 id gone
 id group_divider
 id groups
@@ -1159,6 +1178,10 @@ id invisible
 id italic
 id item_touch_helper_previous_elevation
 id iv_avatar
+id iv_avatar_group
+id iv_avatar_single
+id iv_avatar_user
+id iv_selected
 id labeled
 id largeLabel
 id left
@@ -1195,6 +1218,8 @@ id radio
 id right
 id right_icon
 id right_side
+id rv_chat_list
+id rv_user_list
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type
@@ -1213,6 +1238,7 @@ id search_go_btn
 id search_mag_icon
 id search_plate
 id search_src_text
+id search_view
 id search_voice_btn
 id select_dialog_listview
 id selected
@@ -1237,6 +1263,7 @@ id start
 id stretch
 id submenuarrow
 id submit_area
+id sv_indicator
 id tabMode
 id tag_transition_group
 id tag_unhandled_key_event_manager
@@ -1254,6 +1281,7 @@ id time
 id title
 id titleDividerNoCustom
 id title_template
+id toolbar
 id top
 id topPanel
 id touch_outside
@@ -1262,10 +1290,21 @@ id transition_layout_save
 id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
+id tv_counter_group
+id tv_counter_single
+id tv_date_group
+id tv_date_single
+id tv_last_activity
+id tv_message_author
+id tv_message_group
+id tv_message_single
 id tv_nick_name
 id tv_rank
 id tv_rating
 id tv_respect
+id tv_title_group
+id tv_title_single
+id tv_user_name
 id uniform
 id unlabeled
 id up
@@ -1326,6 +1365,8 @@ layout abc_search_dropdown_item_icons_2line
 layout abc_search_view
 layout abc_select_dialog_material
 layout abc_tooltip
+layout activity_group
+layout activity_main
 layout activity_profile
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -1341,6 +1382,9 @@ layout design_navigation_item_subheader
 layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_password_icon
+layout item_chat_group
+layout item_chat_single
+layout item_user_list
 layout mtrl_layout_snackbar
 layout mtrl_layout_snackbar_include
 layout notification_action
@@ -1349,10 +1393,12 @@ layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
 layout notification_template_part_time
+layout search_view_layout
 layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu menu_search
 mipmap ic_launcher
 mipmap ic_launcher_round
 string abc_action_bar_home_description
@@ -1402,6 +1448,7 @@ string character_counter_pattern
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
 string hide_bottom_view_on_scroll_behavior
+string menu_search_title
 string mtrl_chip_close_icon_content_description
 string password_toggle_content_description
 string path_password_eye
@@ -1416,6 +1463,7 @@ string profile_label_rating
 string profile_label_respect
 string search_menu_title
 string status_bar_notification_info_overflow
+style ActivityTransitions
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -1423,6 +1471,8 @@ style Animation_AppCompat_DropDownUp
 style Animation_AppCompat_Tooltip
 style Animation_Design_BottomSheetDialog
 style AppTheme
+style AppTheme_AppBarOverlay
+style AppTheme_PopupOverlay
 style Base_AlertDialog_AppCompat
 style Base_AlertDialog_AppCompat_Light
 style Base_Animation_AppCompat_Dialog

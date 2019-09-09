@@ -4,7 +4,7 @@
             "outputFile": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-land\\values-land.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\691b9fed79982580b1071ef592686fcd\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\e0fec8bece68618988d2624f52160381\\material-1.0.0\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\f17a21eb106b7babe0840696bf7ed99f\\res\\values-land\\values-land.xml",
+                    "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\92d91bde83bd15a5fac9900e78109a87\\appcompat-1.0.2\\res\\values-land\\values-land.xml",
                     "from": {
                         "startLines": "2,3,4",
                         "startColumns": "4,4,4",

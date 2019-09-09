@@ -8,6 +8,8 @@
         android:minSdkVersion="23"
         android:targetSdkVersion="29" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name="ru.skillbranch.devintensive.App"
         android:allowBackup="true"
@@ -19,17 +21,18 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
-        <activity
-            android:name="ru.skillbranch.devintensive.ui.profile.SplashActivity"
-            android:theme="@style/SplashTheme" >
+        <activity android:name="ru.skillbranch.devintensive.ui.group.GroupActivity" />
+        <activity android:name="ru.skillbranch.devintensive.ui.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ru.skillbranch.devintensive.ui.profile.ProfileActivity" >
-        </activity>
+        <activity
+            android:name="ru.skillbranch.devintensive.ui.profile.SplashActivity"
+            android:theme="@style/SplashTheme" />
+        <activity android:name="ru.skillbranch.devintensive.ui.profile.ProfileActivity" />
 
         <provider
             android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
