@@ -1,4 +1,4 @@
-package ru.skillbranch.devintensive.ui
+package ru.skillbranch.devintensive.ui.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -9,14 +9,11 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.android.material.chip.Chip
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_group.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.fab
 import kotlinx.android.synthetic.main.activity_main.toolbar
 import ru.skillbranch.devintensive.R
-import ru.skillbranch.devintensive.models.data.UserItem
 import ru.skillbranch.devintensive.ui.adapters.ChatAdapter
 import ru.skillbranch.devintensive.ui.adapters.ChatItemTouchHelperCallback
 import ru.skillbranch.devintensive.ui.group.GroupActivity
