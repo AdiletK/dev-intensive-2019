@@ -1,7 +1,6 @@
-package ru.skillbranch.devintensive.models
+package ru.skillbranch.devintensive.models.data
 
 import ru.skillbranch.devintensive.extensions.humanizeDiff
-import ru.skillbranch.devintensive.models.data.UserItem
 import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
@@ -44,7 +43,7 @@ data class User (
     companion object Factory{
         private var lastId = -1
 
-        fun makeUser(fullName: String?):User{
+        fun makeUser(fullName: String?): User {
             lastId++
 
             val parts :List<String>? = fullName?.split(" ")
@@ -52,7 +51,11 @@ data class User (
             val  firstName = parts?.getOrNull(0)
             val  lastName = parts?.getOrNull(1)
 
-            return User(id = lastId.toString(),firstName = firstName,lastName = lastName)
+            return User(
+                id = lastId.toString(),
+                firstName = firstName,
+                lastName = lastName
+            )
         }
     }
 
