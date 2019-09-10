@@ -51,6 +51,7 @@ class MainViewModel : ViewModel(){
         }
         result.addSource(chats){filterF.invoke()}
         result.addSource(query){filterF.invoke()}
+
         return result
     }
 
@@ -75,7 +76,7 @@ class MainViewModel : ViewModel(){
         return ChatItem(
             id = "-1",
             avatar = null,
-            initials = "",
+            initials = "A",
             title = "Архив чатов",
             shortDescription = archiveChat.lastMessageShort().first,
             messageCount = unreadableMessagesCount,
