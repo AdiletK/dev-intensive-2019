@@ -14,4 +14,20 @@
         <attr name="centerColor" format="color"/>
         <attr name="textColor" format="color"/>
     </declare-styleable>
+
+    <attr name="colorIndicator" format="reference"/>
+    <attr name="colorItemBackground" format="reference"/>
+    <attr name="colorArchiveIcon" format="reference"/>
+    <attr name="colorText" format="reference"/>
+    <attr name="colorSubtext" format="reference"/>
+    <attr name="colorMessageCounter" format="reference"/>
+    <attr name="colorSelectIcon" format="reference"/>
+    <attr name="colorSwipeBackground" format="reference"/>
+
+    <attr name="colorSnackbarBackground" format="reference"/>
+    <attr name="colorSnackbarText" format="reference"/>
+
+    <attr name="colorChipBackground" format="reference"/>
+    <attr name="colorChipGroupBackground" format="reference"/>
+    <attr name="colorChipCloseIcon" format="reference"/>
 </resources>

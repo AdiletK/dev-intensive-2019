@@ -636,8 +636,16 @@
         "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\e0fec8bece68618988d2624f52160381\\material-1.0.0\\res\\interpolator-v21\\mtrl_fast_out_linear_in.xml"
     },
     {
+        "merged": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_archive.xml.flat",
+        "source": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\src\\main\\res\\layout\\activity_archive.xml"
+    },
+    {
         "merged": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\build\\intermediates\\res\\merged\\debug\\color_design_error.xml.flat",
         "source": "C:\\Users\\Adilet\\.gradle\\caches\\transforms-2\\files-2.1\\e0fec8bece68618988d2624f52160381\\material-1.0.0\\res\\color\\design_error.xml"
+    },
+    {
+        "merged": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\build\\intermediates\\res\\merged\\debug\\layout_item_chat_archive.xml.flat",
+        "source": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\src\\main\\res\\layout\\item_chat_archive.xml"
     },
     {
         "merged": "D:\\TestApps\\DevIntensive\\Devintensive\\app\\build\\intermediates\\res\\merged\\debug\\drawable-hdpi-v4_abc_ic_star_half_black_36dp.png.flat",

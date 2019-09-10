@@ -22,8 +22,9 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/AppTheme" >
+        <activity android:name="ru.skillbranch.devintensive.ui.archive.ArchiveActivity" />
         <activity android:name="ru.skillbranch.devintensive.ui.group.GroupActivity" />
-        <activity android:name="ru.skillbranch.devintensive.ui.MainActivity" >
+        <activity android:name="ru.skillbranch.devintensive.ui.main.MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

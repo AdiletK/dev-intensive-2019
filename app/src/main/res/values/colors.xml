@@ -14,4 +14,18 @@
     <color name="color_divider_light">#1FFFFFFF</color>
     <color name="color_indicator">#581F99</color>
     <color name="color_green">#4fD149</color>
+
+    <color name="color_splash_light">#F7FCFC</color>
+    <color name="color_splash">#EFEFEF</color>
+    <color name="color_indicator_night">#2196F3</color>
+
+    <color name="color_item_background">#FFFFFF</color>
+    <color name="color_item_background_night">#232223</color>
+
+    <color name="color_text_night">#FFFFFF</color>
+    <color name="color_select_icon_night">#2196F3</color>
+    <color name="color_swipe_background_night">#2196F3</color>
+    <color name="color_snackbar_text_night">#121212</color>
+    <color name="color_chip_background_night">#1D1D1D</color>
+    <color name="color_chip_group_background_night">#121212</color>
 </resources>
