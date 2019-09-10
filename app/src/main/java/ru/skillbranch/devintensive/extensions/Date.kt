@@ -28,7 +28,7 @@ fun Date.add(value: Int, unit: TimeUnits = TimeUnits.SECOND):Date{
     return this
 }
  fun Date.shortFormat(): String {
-     val pattern = if (this.isSameDay(Date())) "HH:mm" else "dd:MM:yy"
+     val pattern = if (this.isSameDay(Date())) "HH:mm" else "dd.MM.yy"
      val dateFormat = SimpleDateFormat(pattern, Locale("ru"))
      return dateFormat.format(this)
 }
